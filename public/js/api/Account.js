@@ -3,20 +3,16 @@
  * Управляет счетами пользователя.
  * Имеет свойство URL со значением '/account'
  * */
-class Account extends Entity {
-
-  static URL = '/account'
+ class Account extends Entity {
+  static URL = "/account";
   /**
    * Получает информацию о счёте
    * */
-  static get(id = '', callback){
-    return createRequest({
-      url: this.URL,
-      method: 'GET',
-      data: {
-        id,
-      },
+  static get(id = "", callback) {
+    createRequest({
+      url: this.URL + id,
+      method: "GET",
       callback,
-  });
-}
+    });
+  }
 }
