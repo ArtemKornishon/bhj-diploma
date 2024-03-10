@@ -5,6 +5,12 @@
       "email": "demo@demo",
       "password": "demo",
       "id": "1"
+    },
+    {
+      "name": "ddd",
+      "email": "awaywee@gmail.com",
+      "password": "1234",
+      "id": "4b22mmv7ltg5rhtt"
     }
   ],
   "accounts": [
@@ -22,6 +28,11 @@
       "name": "Бизнес",
       "user_id": "1",
       "id": "3"
+    },
+    {
+      "name": "nalik",
+      "user_id": "4b22mmv7ltg5rhtt",
+      "id": "4b22mmxeltg6286u"
     }
   ],
   "transactions": [

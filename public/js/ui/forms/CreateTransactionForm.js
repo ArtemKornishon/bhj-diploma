@@ -17,21 +17,21 @@
 	 * Получает список счетов с помощью Account.list
 	 * Обновляет в форме всплывающего окна выпадающий список
 	 * */
-	renderAccountsList() {
-		const modaAccList = this.element.querySelector("select.accounts-select")
-		modaAccList.innerHTML = ""
-		const data = User.current()
-		Account.list(data, (err, response) => {
-		if (response.success) {
-			response.data.forEach((accObj) =>
-			modaAccList.insertAdjacentHTML(
-				"beforeend",
-				`<option value="${accObj.id}">${accObj.name}</option>`
-			)
-			)
-		}
-		})
-	}
+   renderAccountsList() {
+    if (!this.accountsList) {
+      return;
+    }
+    Account.list({}, (error, response) => {
+      if (error) {
+        throw new Error(error);
+      }
+      if (!response.success || response.data.length === 0) {
+        return;
+      }
+      this.accountsList.innerHTML = response.data.reduce((acc, item) => acc + this.getAccount(item), '');
+    });
+  }
+
 
 	/**
 	 * Создаёт новую транзакцию (доход или расход)

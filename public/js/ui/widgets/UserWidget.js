@@ -14,13 +14,11 @@ class UserWidget {
   constructor(element){
     if (!element) {
       throw new Error('Element не передан');
-    } else {
-      this.element = element
     }
+
+      this.element = element
   }
 
-
-  }
 
   /**
    * Получает информацию о текущем пользователе

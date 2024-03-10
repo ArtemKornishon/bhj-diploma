@@ -15,7 +15,7 @@ class LoginForm extends AsyncForm {
       document.forms["login-form"].reset()
 			App.setState("user-logged")
 			App.getModal("login").close()
-		} else window.alert(response.error)
+		}
 		})
 	}
 }

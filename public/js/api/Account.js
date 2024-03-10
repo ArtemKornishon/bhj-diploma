@@ -10,7 +10,7 @@
    * */
   static get(id = "", callback) {
     createRequest({
-      url: this.URL + id,
+      url: `${this.URL}/${id}`,
       method: "GET",
       callback,
     });
