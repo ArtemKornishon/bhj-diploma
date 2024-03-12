@@ -53,17 +53,24 @@
     * Отображает список полученных счетов с помощью
     * метода renderItem()
     * */
-   update() {
-     const data = User.current();
-     if (data) {
-       Account.list(data, (err, response) => {
-         if (response.success) {
-           this.clear();
-           this.renderItem(response.data);
-         }
-       });
-     }
-   }
+    update() {
+      const currentUser = User.current();
+      if (!currentUser) {
+        return;
+      }
+      Account.list({}, (error, response) => {
+        if (error) {
+          throw new Error(error);
+        }
+        if (!response.success || response.data.length === 0) {
+          return;
+        }
+        this.clear();
+        response.data.forEach(account => this.renderItem(account));
+        this.registerEvents()
+      });
+    }
+  
 
    /**
     * Очищает список ранее отображённых счетов.
@@ -115,13 +122,7 @@
     * AccountsWidget.getAccountHTML HTML-код элемента
     * и добавляет его внутрь элемента виджета
     * */
-   renderItem(data) {
-     const accountListMenu = document.querySelector(".accounts-panel");
-     data.forEach((item) =>
-       accountListMenu.insertAdjacentHTML(
-         "beforeend",
-         this.getAccountHTML(item)
-       )
-     );
-   }
- }
+    renderItem(data){
+      this.element.insertAdjacentHTML('beforeend', this.getAccountHTML(data));
+    }
+  }

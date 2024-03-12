@@ -170,6 +170,33 @@
       "sum": 300000,
       "type": "expense",
       "user_id": "1"
+    },
+    {
+      "id": "4b22mulrlto8ehsg",
+      "type": "income",
+      "name": "zp",
+      "sum": 10000,
+      "account_id": "4b22mmxeltg6286u",
+      "user_id": "4b22mmv7ltg5rhtt",
+      "created_at": "2024-03-12T10:30:35.151Z"
+    },
+    {
+      "id": "4b22mumglto8extp",
+      "type": "expense",
+      "name": "moloko",
+      "sum": 5000,
+      "account_id": "4b22mmxeltg6286u",
+      "user_id": "4b22mmv7ltg5rhtt",
+      "created_at": "2024-03-12T10:30:55.932Z"
+    },
+    {
+      "id": "4b22mup6lto8h0ft",
+      "type": "income",
+      "name": "zp",
+      "sum": 10000,
+      "account_id": "4b22mmxeltg6286u",
+      "user_id": "4b22mmv7ltg5rhtt",
+      "created_at": "2024-03-12T10:32:32.632Z"
     }
   ]
 }

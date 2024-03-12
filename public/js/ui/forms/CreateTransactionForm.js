@@ -7,11 +7,12 @@
 	 * Вызывает родительский конструктор и
 	 * метод renderAccountsList
 	 * */
-	constructor(element) {
-		super(element)
-		this.renderAccountsList()
-		this.element = element
-	}
+	 constructor(element) {
+		super(element);
+		this.modal = this.element.closest('.modal');
+		this.accountsList = this.element.querySelector('[name="account_id"]');
+		this.renderAccountsList();
+	  }
 
 	/**
 	 * Получает список счетов с помощью Account.list
@@ -32,6 +33,10 @@
     });
   }
 
+  getAccount(data) {
+    return `<option value="${data.id}">${data.name}</option>`;
+  }
+
 
 	/**
 	 * Создаёт новую транзакцию (доход или расход)
@@ -39,22 +44,18 @@
 	 * вызывает App.update(), сбрасывает форму и закрывает окно,
 	 * в котором находится форма
 	 * */
-	onSubmit(data) {
-		Transaction.create(data, (err, response) => {
-		if (response.success) {
-			let modalName
-			switch (data.type) {
-			case "expense":
-				modalName = "newExpense"
-				break
-			case "income":
-				modalName = "newIncome"
-				break
-			}
-			document.forms[`new-${data.type}-form`].reset()
-			App.getModal(modalName).close()
-			App.update()
-		}
-		})
+	 onSubmit(data) {
+		Transaction.create(data, (error, response) => {
+		  if (error) {
+			throw new Error(error);
+		  }
+		  if (!response.success) {
+			return;
+		  }
+		  this.element.reset();
+		  App.getModal('newIncome').close();
+		  App.getModal('newExpense').close();
+		  App.update();
+		});
+	  }
 	}
-}
