@@ -86,7 +86,7 @@
            id: id,
          },
          (err, response) => {
-           if (response.success) {
+           if (response && response.success) {
              App.update();
            }
          }
